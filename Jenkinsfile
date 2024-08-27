@@ -10,7 +10,7 @@ pipeline {
         stage('Build'){
             steps{
                 echo "Fetching source code from: $DIRECTORY_PATH"
-                echo "Compile code and generate any necessary artifacts."
+                echo "Build carried out using MSBuild."
             }
             post{
                 always{
@@ -20,18 +20,18 @@ pipeline {
         }
         stage('Test'){
             steps{
-                echo "Unit tests..."
-                echo "Integration tests..."
+                echo "Unit tests carried out using MSTest."
+                echo "Integration tests carried out using MSTest."
             }
         }
         stage('Code Analysis'){
             steps{
-                echo "Checking the quality of the code ..."
+                echo "Code analysis carried out using PMD."
             }
         }
         stage('Security Scan'){
             steps{
-                echo "Security scan complete."
+                echo "Security scan carried out using HCL AppScan."
             }
             post{
                 always{
@@ -41,18 +41,17 @@ pipeline {
         }
         stage('Deploy to Staging'){
             steps{
-                echo "Deploying the application to staging."
+                echo "Deployed to staging area on AWS Cloud Server."
             }
         }
         stage('Integration Tests'){
             steps{
-                sleep(10)
-                echo "Approved"
+                echo "Integration tests carried out using MSTest."
             }
         }
         stage('Deploy to Production'){
             steps{
-                echo "Deploying to Production Environment: $PRODUCTION_ENVIRONMENT"
+                echo "Deployed to production area on AWS Cloud Server."
             }
         }
     }
