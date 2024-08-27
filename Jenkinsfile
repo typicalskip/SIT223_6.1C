@@ -60,7 +60,7 @@ pipeline {
 
 def sendEmail(stage){
     emailext (
-        to: "typicalskip88@gmail.com",
+        to: "$EMAIL",
         subject: "${stage} Status Email",
         body: "Stage - ${stage} - has finished.\nStatus is ${currentBuild.currentResult}.\nLogs are attached.",
         attachLog: true)
