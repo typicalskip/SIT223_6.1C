@@ -12,16 +12,16 @@ pipeline {
                 echo "Fetching source code from: $DIRECTORY_PATH"
                 echo "Build carried out using MSBuild."
             }
-            post{
-                always{
-                    sendEmail("Build")
-                }
-            }
         }
         stage('Test'){
             steps{
                 echo "Unit tests carried out using MSTest."
                 echo "Integration tests carried out using MSTest."
+            }
+            post{
+                always{
+                    sendEmail("Test")
+                }
             }
         }
         stage('Code Analysis'){
